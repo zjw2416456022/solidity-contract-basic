@@ -1,0 +1,15 @@
+{
+  "name": "JaredNFT", 
+  "description": "JaredNFT", 
+  "image": "ipfs://bafybeidau3vhvypwsjt3nq2qocow4h5tsto2ys2aczgkgmpi7ytkvgenva",
+  "attributes": [ 
+    {
+      "trait_type": "Rarity",
+      "value": "Rare111"
+    },
+    {
+      "trait_type": "Theme",
+      "value": "Technology111"
+    }
+  ]
+}

@@ -2,8 +2,7 @@
 pragma solidity ^0.8.0;
 
 /**
- * @title SimpleERC20
- * @dev 一个简单的ERC20代币合约实现
+ * ERC20 代币
  */
 contract SimpleERC20 {
     // --- 代币基本信息 ---
