@@ -1,27 +1,23 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 /**
- * ERC20 代币
+ * 简单的 ERC20 代币合约
  */
 contract SimpleERC20 {
-    // --- 代币基本信息 ---
     string public name;
     string public symbol;
     uint8 public decimals = 18;
     uint256 public totalSupply;
 
-    // --- 状态变量 ---
     // 存储每个地址的代币余额
     mapping(address => uint256) public balanceOf;
     // 存储授权信息: owner -> spender -> 授权额度
     mapping(address => mapping(address => uint256)) public allowance;
 
-    // --- 事件定义 ---
     event Transfer(address indexed from, address indexed to, uint256 value);
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
-    // --- 合约所有者 ---
     address public owner;
 
     /**
@@ -33,11 +29,8 @@ contract SimpleERC20 {
     constructor(string memory _name, string memory _symbol, uint256 _initialSupply) {
         name = _name;
         symbol = _symbol;
-        // 将初始发行量转换为包含18位小数的总供应量
         totalSupply = _initialSupply * (10 ** uint256(decimals));
-        // 将所有初始代币分配给合约部署者
         balanceOf[msg.sender] = totalSupply;
-        // 设置合约部署者为所有者
         owner = msg.sender;
 
         emit Transfer(address(0), msg.sender, totalSupply);
