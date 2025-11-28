@@ -39,7 +39,7 @@ contract BeggingContract {
         donateEndTime = _endTime;
     }
 
-    // ============ 核心功能：捐赠ETH ============
+    // ============ 捐赠ETH ============
     /// @notice 向合约捐赠ETH，仅在指定时间段内可调用
     function donate() public payable onlyDuringDonationPeriod {
         // 校验捐赠金额必须大于0
@@ -56,7 +56,7 @@ contract BeggingContract {
         emit DonationReceived(msg.sender, msg.value, block.timestamp);
     }
 
-    // ============ 核心功能：所有者提取所有资金 ============
+    // ============ 所有者提取所有资金 ============
     /// @notice 合约所有者提取合约内所有ETH
     function withdraw() public onlyOwner {
         uint256 contractBalance = address(this).balance;
@@ -70,7 +70,7 @@ contract BeggingContract {
         emit FundsWithdrawn(owner, contractBalance, block.timestamp);
     }
 
-    // ============ 核心功能：查询指定地址捐赠额 ============
+    // ============ 查询指定地址捐赠额 ============
     /// @notice 查询某个地址的累计捐赠金额
     /// @param donor 捐赠者地址
     /// @return 该地址的累计捐赠额（wei）
@@ -112,15 +112,5 @@ contract BeggingContract {
         return (topAddresses, topAmounts);
     }
 
-    // ============ 辅助功能：查询合约余额 ============
-    /// @notice 查询合约当前的ETH余额
-    function getContractBalance() public view returns (uint256) {
-        return address(this).balance;
-    }
-
-    // ============ 辅助功能：查询捐赠者总数 ============
-    /// @notice 查询所有捐赠过的地址数量
-    function getDonorCount() public view returns (uint256) {
-        return donors.length;
-    }
+ 
 }
