@@ -91,12 +91,12 @@ contract SimpleERC20 {
 
     /**
      * @dev 增发代币，仅合约所有者可调用
-     * @param value 增发金额（不包含小数位数）
+     * @param value 增发金额
      */
     function mint(uint256 value) public {
         require(msg.sender == owner, "Caller is not the owner");
         
-        uint256 amount = value * (10 ** uint256(decimals));
+        uint256 amount = value;
         totalSupply += amount;
         balanceOf[msg.sender] += amount;
 
